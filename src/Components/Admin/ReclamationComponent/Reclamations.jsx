@@ -184,6 +184,7 @@ function Reclamations() {
           setFinded(false);
           setReclamations(data);
           setFiltredReclamations(data);
+        
         } else {
           setErr(false);
           setReclamations(data);

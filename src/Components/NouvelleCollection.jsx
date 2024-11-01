@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import { GrFavorite } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 
-
-
 const Container = styled.div`
   display: flex;
   background-color: #fff;
@@ -245,6 +243,7 @@ function NouvelleCollection() {
   // get 3 product NouvelleCollection
   useEffect(() => {
     const fetchData = async () => {
+   
       try {
         const response = await fetch(
           `${process.env.REACT_APP_URL_SERVER}/api/products/paginationProducts?page=${pageNouvelleCollection}&limit=${limitNouvelleCollection}`,
@@ -256,15 +255,20 @@ function NouvelleCollection() {
           }
         );
         const data = await response.json();
+
         setProductNouvelleCollection(data.products);
         setTotalProductNouvelleCollection(data.totalCount);
+       
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
+  
   }, [pageNouvelleCollection, limitNouvelleCollection]);
-// Ajouter au favoris
+
+
+  // Ajouter au favoris
   const addToFavorite = async (productId) => {
     try {
       const idProduct = productId;
@@ -281,7 +285,6 @@ function NouvelleCollection() {
       );
 
       const data = await response.json();
-     
 
       alert(data.message);
     } catch (error) {
@@ -311,7 +314,10 @@ function NouvelleCollection() {
         </Title>
         <ProductsContainer>
           {productNouvelleCollection &&
+          
             productNouvelleCollection.map((productNouvelleCollection) => (
+           
+
               <SingleProduct key={productNouvelleCollection._id}>
                 <div>
                   <img
@@ -321,10 +327,17 @@ function NouvelleCollection() {
                 </div>
                 <h2>{productNouvelleCollection.title}</h2>
                 <h4>{productNouvelleCollection.regularPrice} $</h4>
-                <button   onClick={() => {
-                  navigate(`/singleProduct/${productNouvelleCollection._id}`);
-                }} >Voir</button>
-                <GrFavorite title="Ajouter aux favoris"  onClick={() => addToFavorite(productNouvelleCollection._id)} />
+                <button
+                  onClick={() => {
+                    navigate(`/singleProduct/${productNouvelleCollection._id}`);
+                  }}
+                >
+                  Voir
+                </button>
+                <GrFavorite
+                  title="Ajouter aux favoris"
+                  onClick={() => addToFavorite(productNouvelleCollection._id)}
+                />
               </SingleProduct>
             ))}
         </ProductsContainer>

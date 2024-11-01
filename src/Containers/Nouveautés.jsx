@@ -23,7 +23,7 @@ function Nouveautés() {
   return (
     <Container>
       <ContentContainer>
-        <NouvelleCollection />
+        <NouvelleCollection   />
       </ContentContainer>
     </Container>
   );

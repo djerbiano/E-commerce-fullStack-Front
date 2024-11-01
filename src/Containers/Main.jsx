@@ -131,14 +131,19 @@ const ProductContainer = styled.div`
   }
 `;
 
+const LoaderContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
+`;
+
 function Main() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-   fetch(`${process.env.REACT_APP_URL_SERVER}/api/products`, {
+    fetch(`${process.env.REACT_APP_URL_SERVER}/api/products`, {
       method: "GET",
-    }
-    ).then((res) => {
+    }).then((res) => {
       if (res.ok) {
         setLoading(false);
       }
@@ -146,7 +151,9 @@ function Main() {
   }, []);
 
   return loading ? (
-    <Loader />
+    <LoaderContainer>
+      <Loader />
+    </LoaderContainer>
   ) : (
     <Container1>
       <Container>
