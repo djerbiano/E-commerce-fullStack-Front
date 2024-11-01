@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-<<<<<<< HEAD
   width: 100%;
   min-height: 100vh;
-=======
-  width: 100vw;
-  //min-height: 1200px;
-  
->>>>>>> e65dc4e71c8890acaaa2016b71a8c6f6413215f1
   background-color: #000000;
   display: flex;
   justify-content: center;
@@ -17,7 +11,6 @@ const Container = styled.div`
   top: 0;
   bottom: 0;
   z-index: 1000;
-
 
   & > div {
     color: #ffffff;
